@@ -1,0 +1,71 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 540
+  ClientWidth = 1200
+  FormFactor.Width = 1200
+  FormFactor.Height = 768
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnMouseDown = FormMouseDown
+  OnResize = FormResize
+  OnPaint = FormPaint
+  DesignerMasterStyle = 0
+  object Label1: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 250.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 625.000000000000000000
+    Size.Height = 67.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 36.000000000000000000
+    TextSettings.FontColor = claRed
+    Text = #1055#1086#1073#1077#1076#1072'!'
+    Visible = False
+  end
+  object Label2: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 1057.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 102.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 24.000000000000000000
+    TextSettings.FontColor = claRed
+    Text = #1048#1075#1088#1086#1082':'
+  end
+  object Label3: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 1073.000000000000000000
+    Position.Y = 83.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 24.000000000000000000
+    TextSettings.FontColor = claRed
+    Text = '0'
+  end
+  object Label4: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 1057.000000000000000000
+    Position.Y = 144.000000000000000000
+    Size.Width = 136.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 24.000000000000000000
+    TextSettings.FontColor = claBlue
+    Text = #1052#1072#1096#1080#1085#1072':'
+  end
+  object Label5: TLabel
+    StyledSettings = [Family, Style]
+    Position.X = 1073.000000000000000000
+    Position.Y = 197.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 24.000000000000000000
+    TextSettings.FontColor = claBlue
+    Text = '0'
+  end
+end
