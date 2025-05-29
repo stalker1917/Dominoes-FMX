@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.053,=C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.746,C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.196,D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Project1.dproj=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Domino.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.414,=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Dominoes.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.466,C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.746,C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.fmx=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Unit1.fmx</Transaction>
     <Transaction>1899.12.30 00:00:00.000.962,=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Debug.pas</Transaction>
-  </Transactions>  <BT_BuildType>AppStore</BT_BuildType>
+    <Transaction>1899.12.30 00:00:00.000.466,D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Project1.dproj=C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.414,=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Dominoes.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.746,D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Unit1.fmx=C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.053,=C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.746,D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Unit1.pas=C:\Users\Andrey\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Domino.dproj=D:\Мои программы\Delphi\Проект домино\Domino FMX Alpha\Project1.dproj</Transaction>
+  </Transactions>
+	<BT_BuildType>AppStore</BT_BuildType>
 </BorlandProject>

@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls,Dominoes,Debug;
+  FMX.Controls.Presentation, FMX.StdCtrls,Dominoes,Debug, FMX.Objects;
 
 const
 EtalonWidth = 1200;
@@ -20,11 +20,18 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormPaint(Sender: TObject; Canvas: TCanvas; const ARect: TRectF);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1Paint(Sender: TObject; Canvas: TCanvas;
+      const ARect: TRectF);
   private
     { Private declarations }
   public
@@ -98,6 +105,7 @@ begin
   FirstStep := True;
   //NTurn := 0;
   Form1.Label1.Visible := False;
+  Form1.Image3.Visible := False;
   FishFlag := 2;
   EndRound := False;
 end;
@@ -121,12 +129,24 @@ var
   DotColor: TAlphaColor;
   //Center
   VertiCal : Boolean;
+  Bitmap : TBitmap;
+  BmpRect : TRect;
 begin
   DotRadius := EtalontoX(DominoPixel)/10;
   DotColor := TAlphaColors.White;
   Vertical := DominoRect.Height>DominoRect.Width;
   if Vertical then Max := DominoRect.Height/4
               else Max := DominoRect.Width/4;
+ {
+  Bitmap := TBitmap.Create;
+  Bitmap.Width := ROund(DominoRect.Width);
+  Bitmap.Height := ROund(DominoRect.Height);
+  BmpRect := TRect.Create(TPoint.Create(0,0),Bitmap.Width,Bitmap.Height);
+  Bitmap.Canvas.Fill.Color := TAlphaColors.Black;
+  Bitmap.Canvas.BeginScene();
+  Bitmap.Canvas.FillRect(BmpRect, 0, 0, [], 1);
+  Bitmap.Canvas.EndScene();   }
+
 
 
   // Paint dominoes
@@ -169,6 +189,7 @@ begin
   if Vertical then DotY := DominoRect.Bottom - DominoRect.Height/4
               else DotX := DominoRect.Right - DominoRect.Width/4;//DotRadius * 2;
   PaintDots(Canvas, DotX, DotY, DotRadius, DotCountB, Max, DotColor);
+ // Canvas.DrawBitmap(Bitmap,BmpRect,DominoRect,1,false);
 end;
 
 procedure TForm1.PaintDots;
@@ -229,6 +250,7 @@ begin
   for I := 0 to 1 do Scores[i] := MainField.GetScore(i);
   Label1.Text := 'Рыба';
   Label1.Visible := True;
+  Image3.Visible := True;
   TurnBot := _TurnBot;  //Здесь переставляем ход на того, кто обьявил рыбу
   if Scores[0]>Scores[1] then
     begin
@@ -292,6 +314,18 @@ begin
     else BotTurn;
 end;
 
+procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+FormMouseDown(Sender,Button,Shift, X, Y);
+end;
+
+procedure TForm1.Image1Paint(Sender: TObject; Canvas: TCanvas;
+  const ARect: TRectF);
+begin
+FormPaint(Sender,Form1.Canvas,Arect);
+end;
+
 procedure TForm1.BotTurn;
 begin
   if MainField.High[2]=0 then MainField.ScoreTurn(1)
@@ -326,6 +360,7 @@ begin
    begin
      EndRound := False;
      Label1.Visible := False;
+     Image3.Visible := False;
      NewRound;
      if TurnBot then BotTurn; //Первый ход бота.
      Invalidate;
@@ -466,13 +501,14 @@ procedure TForm1.FormPaint(Sender: TObject; Canvas: TCanvas;
   const ARect: TRectF);
 begin
   Canvas.BeginScene;
-  Canvas.Fill.Color:=TAlphaColors.White;
-  Canvas.FillRect(ClientRect,1);    //полностью очищаем форму.
+ // Canvas.Fill.Color:=TAlphaColors.White;
+ // Canvas.FillRect(ClientRect,1);    //полностью очищаем форму.
   PaintPlayer(0,530-DominoPixel*2);
   PaintPlayer(1,10);
   PaintTable(3,MainField.TableLow);
   PaintTable(4,MainField.TableHigh);
   Canvas.EndScene;
+  //if Image3.Visible then Image3.InvalidateRect(TRectF.Create(0,0,Image3.Width,Image3.Height));
 end;
 
 
@@ -483,6 +519,13 @@ end;
 procedure TForm1.FormResize(Sender: TObject);
 var ScaleX,ScaleY:Double;
 begin
+
+Image1.Position.X := 0;
+Image1.Position.Y := 0;
+Image1.Height := ClientHeight;
+Image1.Width := ClientWidth;
+
+
 {$IFDEF ANDROID}
 ScaleX := ClientWidth/EtalonWidth;
 ScaleY := ClientHeight/EtalonHeight;
@@ -507,6 +550,18 @@ Label5.Position.Y := EtalonToY(195);
 Label5.Scale.X := ScaleX;
 Label5.Scale.Y := ScaleY;
 {$ENDIF}
+Image2.Position.X := Label2.Position.X-EtalonToX(20);
+Image2.Width := Label4.Width + EtalonToX(50);
+Image2.Position.Y := Label2.Position.Y -  EtalonToY(20);
+Image2.Height := Label5.Position.Y+Label5.Height-Image2.Position.Y +EtalonToY(20);
+Image3.Position.X := Label1.Position.X-EtalonToX(10);
+Image3.Width := EtalonToX(260);//Label1.Width + EtalonToX(20);
+Image3.Position.Y := Label1.Position.Y -  EtalonToY(10);
+Image3.Height := Label1.Height + EtalonToY(20);
+
+
+
+Invalidate;
 end;
 
 
